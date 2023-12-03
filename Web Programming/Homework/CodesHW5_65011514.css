@@ -1,0 +1,58 @@
+.main {
+    font-family: Arial;
+    max-width: 1080px;
+    min-width: 480px;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+h2 {
+    font-size: 36px;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+img {
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item {
+    flex: 1;
+    padding: 10px;
+}
+
+.subject {
+    border: 1px solid gray;
+    padding: 10px;
+}
+
+@media screen and (max-width: 750px) {
+    h1 {
+        font-size: 36px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    img {
+        width: 70%;
+    }
+
+    .item {
+        flex: 100%;
+    }
+}
