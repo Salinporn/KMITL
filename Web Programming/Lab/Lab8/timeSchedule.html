@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Online Timer</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        th,
+        td {
+            padding-left: 20px;
+            padding-right: 20px;
+            text-align: center;
+        }
+
+        #edit {
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        #addRowButton {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10px;
+            display: none;
+        }
+
+        #dateLabel, #buttons {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Time Schedule</h1><br>
+        <div id="dateLabel">
+            <label>Select Date</label>
+            <input type="date" id="dateInput"><br><br>
+        </div>
+        <h2 id="currentTime"></h2>
+        <table id="theTable" border="1">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Activity</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table><br>
+        <button id="addRowButton">Add Row</button><br>
+        <button id="edit">Edit Schedule</button>
+        <div id="buttons">
+            <label>Import Schedule </label><input type="file" id="fileInput" accept=".json"><br><br>
+            <button id="save">Save Schedule</button><br><br>
+            <button id="export">Export Schedule</button>
+        </div>
+    </div>
+    <script>
+        const editButton = document.getElementById('edit');
+        const saveButton = document.getElementById('save');
+        const exportButton = document.getElementById('export');
+        const dateInput = document.getElementById('dateInput');
+
+        const fileInput = document.getElementById('fileInput');
+        const table = document.getElementById('theTable');
+        const tbody = table.querySelector('tbody');
+
+        fileInput.addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const content = e.target.result;
+                    const data = JSON.parse(content);
+                    tbody.innerHTML = ''; // Clear the table body
+                    for (const row of data) {
+                        const tr = document.createElement('tr');
+                        const td1 = document.createElement('td');
+                        const td2 = document.createElement('td');
+                        td1.textContent = row.time;
+                        td2.textContent = row.activity;
+                        tr.appendChild(td1);
+                        tr.appendChild(td2);
+                        tbody.appendChild(tr);
+                    }
+                };
+                reader.readAsText(file);
+            }
+        });
+
+
+        function removeRow(rowIndex) {
+            table.deleteRow(rowIndex);
+        }
+
+        function editMode() {
+            editButton.textContent = "Done";
+            editButton.removeEventListener("click", editMode);
+            for (var i = 1; i < table.rows.length; i++) {
+                table.rows[i].cells[0].innerHTML = "<input type='time' value='" + table.rows[i].cells[0].textContent + "'>";
+                table.rows[i].cells[1].innerHTML = "<input type='text' value='" + table.rows[i].cells[1].textContent + "'>";
+                table.rows[i].insertCell(2).innerHTML = "<button class='delete' onclick='removeRow(" + i + ")'>remove</button>";
+            }
+            editButton.addEventListener("click", doneMode);
+            var addRowButton = document.getElementById("addRowButton");
+            addRowButton.style.display = "block";
+            addRowButton.addEventListener("click", addRow);
+        }
+
+        function addRow() {
+            var newRow = table.insertRow(table.rows.length);
+            newRow.insertCell(0).innerHTML = "<input type='time'>";
+            newRow.insertCell(1).innerHTML = "<input type='text'>";
+            newRow.insertCell(2).innerHTML = "<button class='delete' onclick='removeRow(" + (table.rows.length - 1) + ")'>remove</button>";
+        }
+
+        function doneMode() {
+            editButton.textContent = "Edit Schedule";
+            editButton.removeEventListener("click", doneMode);
+            for (var i = 1; i < table.rows.length; i++) {
+                table.rows[i].cells[0].innerHTML = table.rows[i].cells[0].children[0].value;
+                table.rows[i].cells[1].innerHTML = table.rows[i].cells[1].children[0].value;
+                table.rows[i].deleteCell(2);
+            }
+            editButton.addEventListener("click", editMode);
+            var addRowButton = document.getElementById("addRowButton");
+            addRowButton.style.display = "none";
+            addRowButton.removeEventListener("click", addRow);
+        }
+
+        editButton.addEventListener("click", editMode);
+
+        function save() {
+            const content = [];
+            for (var i = 1; i < table.rows.length; i++) {
+                content.push({
+                    time: table.rows[i].cells[0].textContent,
+                    activity: table.rows[i].cells[1].textContent
+                });
+            }
+            var date = dateInput.value;
+            localStorage.setItem(date, JSON.stringify(content));
+        }
+        saveButton.addEventListener("click", save);
+
+        function load() {
+            const saved = localStorage.getItem(dateInput.value);
+            console.log(saved);
+            if (saved) {
+                const data = JSON.parse(saved);
+                tbody.innerHTML = ''; // Clear the table body
+                for (const row of data) {
+                    const tr = document.createElement('tr');
+                    const td1 = document.createElement('td');
+                    const td2 = document.createElement('td');
+                    td1.textContent = row.time;
+                    td2.textContent = row.activity;
+                    tr.appendChild(td1);
+                    tr.appendChild(td2);
+                    tbody.appendChild(tr);
+                }
+            } else {
+                tbody.innerHTML = '';
+            }
+        }
+        dateInput.addEventListener("change", load);
+
+        function exportTime() {
+            var data = [];
+            for (var i = 1; i < table.rows.length; i++) {
+                data.push({
+                    time: table.rows[i].cells[0].textContent,
+                    activity: table.rows[i].cells[1].textContent
+                });
+            }
+            var dataStr = JSON.stringify(data);
+            var blob = new Blob([dataStr], {
+                type: "application/json"
+            });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.download = 'schedule.json';
+            a.href = url;
+            a.click();
+        }
+
+        exportButton.addEventListener("click", exportTime);
+    </script>
+</body>
+
+</html>
