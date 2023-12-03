@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BML Calculator</title>
+        <script>
+            function calculateBMI(weight, height) {
+                return weight / (height / 100 * height / 100);
+            }
+        </script>
+    </head>
+    <style>
+        th, td {
+            border: solid 1px black;
+            padding: 5px;
+        }
+        th {
+            background-color: lightskyblue;
+        }
+    </style>
+    <body style="text-align: center; font-size: 18px;">
+        <h1>BMI Calculator</h1>
+        <label>Weight (kg):</label>
+        <input type="text" id="weight"><br>
+        <label>Height (cm):</label>
+        <input type="text" id="height"><br>
+        <button onclick="printResult()">Calculate</button>
+
+        <h2>BMI Result</h2>
+        <p id="bmiResult">No Result</p>
+        <h2>BMI References</h2>
+        <table style="margin: auto; text-align: left; border-collapse: collapse;">
+            <tr>
+                <th>BMI</th>
+                <th>Classification</th>
+            </tr>
+            <tr>
+                <td>Less than 18.5</td>
+                <td>Underweight</td>
+            </tr>
+            <tr>
+                <td>18.5 - 24.9</td>
+                <td>Normal</td>
+            </tr>
+            <tr>
+                <td>25.0 - 29.9</td>
+                <td>Overweight</td>
+            </tr>
+            <tr>
+                <td>30.0 or more</td>
+                <td>Obese</td>
+            </tr>
+        </table>
+        <script>
+            function printResult() {
+    
+                const weight = document.getElementById("weight").value;
+                const height = document.getElementById("height").value;
+                const bmi = calculateBMI(weight, height);
+                document.getElementById("bmiResult").innerHTML = 'With your weight of '+ weight + ' kg and height of ' + height + ' cm<br>Your BMI is ' + bmi;
+
+                if (bmi < 18.5) {
+                    document.getElementById("bmiResult").innerHTML += '<br><b>You are underweight</b>';
+                } else if (bmi >= 18.5 && bmi <= 24.9) {
+                    document.getElementById("bmiResult").innerHTML += '<br><b>You are normal</b>';
+                } else if (bmi >= 25.0 && bmi <= 29.9) {
+                    document.getElementById("bmiResult").innerHTML += '<br><b>You are overweight</b>';
+                } else {
+                    document.getElementById("bmiResult").innerHTML += '<br><b>You are obese</b>';
+                }
+            }
+        </script>
+    </body>
+</html>
