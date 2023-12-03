@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Timer</title>
+</head>
+<body style="text-align: center;">
+    <h1>Online Timer</h1>
+    <label>Current Time (1000x faster): </label>
+    <label id="currentTime"></label><br><br>
+
+    <table id="alertTable" border style="margin: 0 auto;">
+        <tr>
+            <td>Time</td>
+            <td>Alert Word</td>
+        </tr>
+        <tr>
+            <td>09.00</td>
+            <td>Wake up</td>
+        </tr>
+        <tr>
+            <td>11.05</td>
+            <td>Lunch time</td>
+        </tr>
+        <tr>
+            <td>15.30</td>
+            <td>Take a break</td>
+        </tr>
+    </table>
+
+    <script>
+        function alertTimer(alertTime, alertMessage) {
+            this.alertTime = alertTime;
+            this.alertMessage = alertMessage;
+        }
+
+        var alertTime = [
+            new alertTimer("09:00", "Wake Up"),
+            new alertTimer("12:05", "Lunch"),
+            new alertTimer("15:30", "Take a break")
+        ];
+
+        function timer() {
+            var currentTimeElement = document.getElementById("currentTime");
+            var hours = 8;
+            var minutes = 55;
+            var seconds = 0;
+
+            setInterval(function () {
+                seconds += 1;
+                if (seconds == 60) {
+                    seconds = 0;
+                    minutes += 1;
+                }
+                if (minutes == 60) {
+                    minutes = 0;
+                    hours += 1;
+                }
+                if (hours == 24) {
+                    hours = 0;
+                }
+                var formattedTime = (hours < 10 ? "0" : "") + hours + ":" + (minutes < 10 ? "0" : "") + minutes;
+                currentTimeElement.textContent = formattedTime;
+
+                for (var i = 0; i < alertTime.length; i++) {
+                    if (alertTime[i].alertTime == formattedTime) {
+                        alert(alertTime[i].alertMessage);
+                        minutes += 1;
+                    }
+                }
+            }, 1000 / 1000);
+        }
+
+        timer();
+    </script>
+</body>
+</html>

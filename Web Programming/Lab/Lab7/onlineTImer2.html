@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Timer</title>
+</head>
+<style>
+    tr, td {
+        text-align: left;
+    }
+</style>
+<body style="text-align: center;">
+    <h1>Online Timer</h1>
+    <label>Current Time (1000x faster): </label>
+    <label id="currentTime"></label><br><br>
+
+    <button id="myButton" onclick="editMode()">Edit</button><br><br>
+
+    <table id="alertTable" border style="margin: 0 auto;">
+        <tr>
+            <th>Time</th>
+            <th>Alert Word</th>
+        </tr>
+        <tr>
+            <td>09.00</td>
+            <td>Wake up</td>
+        </tr>
+        <tr>
+            <td>11.05</td>
+            <td>Lunch time</td>
+        </tr>
+        <tr>
+            <td>15.30</td>
+            <td>Take a break</td>
+        </tr>
+    </table>
+
+    <script>
+        var alertTimes = [
+            new alertTimer("09:00", "Wake Up"),
+            new alertTimer("12:05", "Lunch"),
+            new alertTimer("15:30", "Take a break")
+        ];
+
+        function alertTimer(alertTime, alertMessage) {
+            this.alertTime = alertTime;
+            this.alertMessage = alertMessage;
+        }
+
+        function timer() {
+            var currentTimeElement = document.getElementById("currentTime");
+            var hours = 11;
+            var minutes = 0;
+            var seconds = 0;
+
+            setInterval(function () {
+                seconds += 1;
+                if (seconds == 60) {
+                    seconds = 0;
+                    minutes += 1;
+                }
+                if (minutes == 60) {
+                    minutes = 0;
+                    hours += 1;
+                }
+                if (hours == 24) {
+                    hours = 0;
+                }
+                var formattedTime = (hours < 10 ? "0" : "") + hours + ":" + (minutes < 10 ? "0" : "") + minutes;
+                currentTimeElement.textContent = formattedTime;
+
+                for (var i = 0; i < alertTimes.length; i++) {
+                    if (alertTimes[i].alertTime == formattedTime) {
+                        alert(alertTimes[i].alertMessage);
+                        minutes += 1;
+                    }
+                }
+            }, 1000 / 1000);
+        }
+        timer(); 
+
+        function editMode() {
+            var table = document.getElementById("alertTable");
+            var button1 = document.getElementById("myButton"); // Declare button1 variable
+            var rows = table.rows.length;
+            var cols = table.rows[0].cells.length;
+
+            if (button1.innerHTML == "Edit") {
+                button1.innerHTML = "Done";
+                table.rows[0].style.display = "none";
+
+                for (var i = 1; i < rows; i++) {
+                    for (var j = 0; j < cols; j++) {
+                        var cell = table.rows[i].cells[j];
+                        var cellText = cell.innerHTML;
+                        cell.innerHTML = "<input type='text' value='" + cellText + "'>";
+                    }
+                }
+
+                for (var i = 1; i < rows; i++) {
+                    var row = table.rows[i];
+                    var cell = row.insertCell(cols);
+                    cell.innerHTML = "<button onclick='removeRow(this)'>Remove</button>";
+                }
+
+                var button3 = document.createElement("button");
+                button3.innerHTML = "Add Row";
+                button3.setAttribute("onclick", "addRow()");
+                document.body.appendChild(button3);
+            } else if (button1.innerHTML == "Done") {
+                button1.innerHTML = "Edit";
+                table.rows[0].style.display = "table-row";
+
+                // Update the alertTime array
+                alertTime = extractAlertData();
+
+                for (var i = 1; i < rows; i++) {
+                    for (var j = 0; j < cols; j++) {
+                        var cell = table.rows[i].cells[j];
+                        var cellText = cell.children[0].value;
+                        cell.innerHTML = cellText;
+                    }
+                }
+
+                for (var i = 1; i < rows; i++) {
+                    var row = table.rows[i];
+                    row.deleteCell(cols);
+                }
+
+                var button3 = document.getElementsByTagName("button")[1];
+                document.body.removeChild(button3);
+            }
+        }
+
+        function addRow() {
+            var table = document.getElementById("alertTable");
+            var rows = table.rows.length;
+            var cols = table.rows[0].cells.length;
+            var newRow = table.insertRow(rows);
+            
+            for (var i = 0; i < cols; i++) {
+                var cell = newRow.insertCell(i);
+                cell.innerHTML = "<input type='text'>";
+            }
+            
+            var cell = newRow.insertCell(cols);
+            cell.innerHTML = "<button onclick='removeRow(this)'>Remove</button>";
+
+            if (button1.innerHTML == "Done") {
+                alertTime = extractAlertData();
+                console.log(alertTime);
+            }
+        }
+
+        function removeRow(row) {
+            var table = document.getElementById("alertTable");
+            var rowIndex = row.parentNode.parentNode.rowIndex;
+            table.deleteRow(rowIndex);
+        }
+
+        function extractAlertData() {
+            var table = document.getElementById("alertTable");
+            var rows = table.rows;
+            var alertData = [];
+
+            for (var i = 1; i < rows.length; i++) {
+                var cells = rows[i].cells;
+                if (cells.length === 2) {
+                    var alertTime = cells[0].textContent;
+                    var alertMessage = cells[1].textContent;
+                    if (/^\d{2}:\d{2}$/.test(alertTime)) { // Check for valid time format
+                        alertData.push(new alertTimer(alertTime, alertMessage));
+                    }
+                }
+            }
+
+            return alertData;
+        }
+    </script>
+</body>
+</html>
