@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="http://161.246.5.61/Lab.js"></script>
+        <link rel="stylesheet" href="cv3.css">
+    </head>
+    <body>
+        <form>
+            <div class="row">
+                <div class="item">
+                    <div class="leftProfile">
+                        <div class="profilePic">
+                            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQmcqzN9KSMx-hxPJfiB3yt59uQhN9R4IqjisfUEitJv9lbQVN14QYLsUfmgiH-AoH2VgTFMdRBaTWa9XXpU9aMV1fveYnRgRsf4peaqt_rCR_qyQ483NgjHHdhfYpOr8axyGWhk3DHw5lAUQkXl6NGMugPS7k6Apw7CUjqRMgwAv01i2_AXyRumuBfw/s458/blank-profile-picture-hd-images-photo.JPG"><br>
+                        </div>
+                        <div class="profile">
+                            <label><b>Profile:</b></label><br>
+                            <textarea id="profile"></textarea>
+                        </div>
+                        <div class="address">
+                            <label><b>Address:</b></label><br><br>
+                            <input type="text" id="street" name="street"><br><br>
+                            <input type="text" id="city" name="city"><br><br>
+                            <select id="country">
+                                <option>Select a country</option>
+                            </select><br>
+                            <script>populateCountries()</script>
+                        </div>
+                        <div class="contacts">
+                            <label><b>Contacts:</b></label><br>
+                        </div>
+                        <div class="ref">
+                            <label><b>Reference:</b></label><br>
+                            <textarea id="ref"></textarea>
+                        </div>
+                        <div class="favColor">
+                            <label><b>Favorite Colour:</b></label><br><br><br>
+                            <input type="color" id="favColour" name="favColour"><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="righttop">
+                        <div class="personalInfo">
+                            <label><b>Personal Information:</b></label><br>
+                        </div>
+                        <div class="info">
+                            <label><b>Name:</b></label><br><br>
+                            <input type="text" id="name" name="name"><br><br>
+                            <label><b>Age:</b></label><br><br>
+                            <input type="range" id="age" name="age" min="0" max="100" value="0" oninput="amount.value=age.value">
+                            <output id="amount" name="amount" for="rangeInput">0</output><br><br>
+                            <label><b>Email:</b></label><br><br>
+                            <input type="email" id="email" name="email"><br><br>
+                            <label><b>Phone:</b></label><br><br>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                    </div>
+                    <div class="rightmid">
+                        <div class="edu">
+                            <label><b>Education:</b></label><br>
+                        </div>
+                        <div class="eduInfo">
+                            <label><b>University:</b></label><br><br>
+                            <input type="text" id="university" name="university"><br><br>
+                            <br><label><b>Degree:</b></label><br>
+                            <br><input type="text" id="degree" name="degree"><br>
+                            <br><label><b>Year of Graduation:</b></label><br>
+                            <br><input type="date" id="graduationYear" name="graduationYear">
+                        </div>
+                    </div>
+                    <div class="rightbottom1">
+                        <div class="skillExp">
+                            <label><b>Skills & Experience:</b></label><br>
+                        </div>
+                    </div>
+                    <div class="rightbottom2">
+                        <div class="skills">
+                            <label><b>Skills:</b></label><br><br>
+                            <textarea id="skills"></textarea>
+                        </div>
+                        <div class="exp">
+                            <label><b>Experience:</b></label><br><br>
+                            <textarea id="experience"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="submit">
+                <button type="submit" value="Submit" onclick="displayResume()">Submit</button>
+            </div>
+        </form>
+    </body>
+</html>
