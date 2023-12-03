@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+        
+        .column {
+          float: left;
+          width: 50%;
+          white-space: normal;
+        }
+        
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            font-family: Angsana New;
+            font-size: 22px;
+        }
+    </style>
+    <head>
+        <title>Transcript</title>
+        <h1 style="text-align:center">(Unofficial Transcript)</h1><br>
+        <img src="https://ict11.ce.kmitl.ac.th/u65/65011514/hw3/profilePic.jpg" height="150" style="float:right"><br>
+        <p style="text-align:center; font-size: x-large; padding-left: 150px;">School of Engineering</p><br>
+    </head>
+    <body>
+        <form>
+            <div class="row">
+                <div class="column">
+                    <br><br><label><b><i>Name:</i></b></label>
+                    <input type="text" id="name"><br>
+        
+                    <label><b><i>Date of Birth:</i></b></label>
+                    <input type="text" id="birthday"><br>
+
+                    <label><b><i>Degree:</i></b></label>
+                    <input type="text" id="degree"><br>
+
+                    <label><b><i>Major:</i></b></label>
+                    <input type="text" id="major"><br>
+                </div>
+                <div class="column">
+                    <label><b><i>Student ID:</i></b></label>
+                    <input type="text" id="studentID" pattern="[0-9]{8}"><br>
+                    <label><b><i>Date of Graduation:</i></b></label>
+                    <input type="text" id="graduationDate"><br><br>
+                </div>
+            </div>
+
+            <table style="width:100%">
+                <tr>
+                    <th colspan="3" style="font-size: 20px; width: 40%;">COURSE TITLE</th>
+                    <th colspan="1" style="font-size: 20px; width: 5%;">CREDIT</th>
+                    <th colspan="1" style="font-size: 20px; width: 5%;">GRADE</th>
+                    <th colspan="3" style="font-size: 20px; width: 40%;">COURSE TITLE</th>
+                    <th colspan="1" style="font-size: 20px; width: 5%;">CREDIT</th>
+                    <th colspan="1" style="font-size: 20px; width: 5%;">GRADE</th>
+                </tr>
+                <tr>
+                    <td style="padding-bottom:250px;" colspan="3">
+                        <label style="padding-left: 200px;"><b><u>Transfer Credit</u></b></label><br>
+                        <input type="text" id="transferID1" size="5" value="13006208" pattern="[0-9]{8}">
+                        <input type="text" id="transferSub1" size="58" value="ACADEMIC ENGLISH 1"><br>
+                        <input type="text" id="transferID2" size="5" value="13006209" pattern="[0-9]{8}">
+                        <input type="text" id="transferSub2" size="58" value="ACADEMIC ENGLISH 2"><br>
+                        <label for="gpa1" style="padding-left: 200px;"><b>GPA: </b></label>
+                        <input type="text" id="gpa1" size="1"value><br>
+            
+                        <label style="padding-left: 150px;"><b><u>1st Semester, Year, 2021-2022</u></b></label><br>
+                        <input type="text" id="firstSemID1" size="5" value="13006007" pattern="[0-9]{8}">
+                        <input type="text" id="firstSemSub1" size="58" value="CALCULUS 1"><br>
+                        <input type="text" id="firstSemID2" size="5" value="13006107" pattern="[0-9]{8}">
+                        <input type="text" id="firstSemSub2" size="58" value="INTRODUCTION TO COMPUTERS AND PROGRAMMING"><br>
+                        <input type="text" id="firstSemID3" size="5" value="13006108" pattern="[0-9]{8}">
+                        <input type="text" id="firstSemSub3" size="58" value="BASIC ELECTRICITY AND ELECTRONICS"><br>
+                        <input type="text" id="firstSemID4" size="5" value="13006301" pattern="[0-9]{8}">
+                        <input type="text" id="firstSemSub4" size="58" value="INTRODUCTION TO LOGIC"><br>
+                        <input type="text" id="firstSemID5" size="5" value="13016235" pattern="[0-9]{8}">
+                        <input type="text" id="firstSemSub5" size="58" value="C PROGRAMMING"><br>
+                        <input type="text" id="firstSemID6" size="5" value="13016236" pattern="[0-9]{8}">
+                        <input type="text" id="firstSemSub6" size="58" value="C PROGRAMMING LABORATORY"><br>
+                        <label for="gps1" style="padding-left: 120px;"><b>GPA: </b></label>
+                        <input type="text" id="gps1" size="1"value>
+                        <label for="gpa2" style="padding-left: 50px;"><b>GPA: </b></label>
+                        <input type="text" id="gpa2" size="1"value>
+            
+                        <label style="padding-left: 150px;"><b><u>2nd Semester, Year, 2021-2022</u></b></label><br>
+                        <input type="text" id="secondSemID1" size="5" value="13006008" pattern="[0-9]{8}">
+                        <input type="text" id="secondSemSub1" size="58" value="CALCULUS 2"><br>
+                        <input type="text" id="secondSemID2" size="5" value="13006303" pattern="[0-9]{8}">
+                        <input type="text" id="secondSemSub2" size="58" value="CULTURAL STUDIES"><br>
+                        <input type="text" id="secondSemID3" size="5" value="13016105" pattern="[0-9]{8}">
+                        <input type="text" id="secondSemSub3" size="58" value="DISCRETE MATHEMATICS"><br>
+                        <input type="text" id="secondSemID4" size="5" value="13016204" pattern="[0-9]{8}">
+                        <input type="text" id="secondSemSub4" size="58" value="DIGITAL CIRCUIT AND LOGIC DESIGN"><br>
+                        <input type="text" id="secondSemID5" size="5" value="13016205" pattern="[0-9]{8}">
+                        <input type="text" id="secondSemSub5" size="58" value="DIGITAL CIRCUIT LABORATORY"><br>
+                        <input type="text" id="secondSemID6" size="5" value="13016209" pattern="[0-9]{8}">
+                        <input type="text" id="secondSemSub6" size="58" value="OBJECT-ORIENTED CONCEPTS AND PROGRAMMING"><br>
+                        <input type="text" id="secondSemID7" size="5" value="13016210" pattern="[0-9]{8}">
+                        <input type="text" id="secondSemSub7" size="58" value="OBJECT-ORIENTED PROGRAMMING LABORATORY"><br>
+                        <label for="gps2" style="padding-left: 120px;"><b>GPS: </b></label>
+                        <input type="text" id="gps2" size="1"value>
+                        <label for="gpa3" style="padding-left: 50px;"><b>GPA: </b></label>
+                        <input type="text" id="gpa3" size="1"value>
+
+                        <label style="padding-left: 150px;"><b><u>1st Semester, Year, 2022-2023</u></b></label><br>
+                        <input type="text" id="firstSemY2ID1" size="5" value="13006006" pattern="[0-9]{8}">
+                        <input type="text" id="firstSemY2Sub1" size="58" value="LINEAR ALGEBRA"><br>
+                        <input type="text" id="firstSemY2ID2" size="5" value="13006210" pattern="[0-9]{8}">
+                        <input type="text" id="name2firstSemY2" size="58" value="TECHNICAL WRITING"><br>
+                        <input type="text" id="firstSemY2ID3" size="5" value="13006403" pattern="[0-9]{8}">
+                        <input type="text" id="firstSemY2Sub3" size="58" value="BUSINESS ADMINISTRATION"><br>
+                        <input type="text" id="firstSemY2ID4" size="5" value="13016207" pattern="[0-9]{8}">
+                        <input type="text" id="firstSemY2Sub4" size="58" value="COMPUTER ORGANIZATION AND ASSEMBLY LANGUAGE"><br>
+                        <input type="text" id="firstSemY2ID5" size="5" value="13016208" pattern="[0-9]{8}">
+                        <input type="text" id="firstSemY2Sub5" size="58" value="COMPUTER ORGANIZATION AND ASSEMBLY LANGUAGE LABORATORY"><br>
+                        <input type="text" id="firstSemY2ID6" size="5" value="13016212" pattern="[0-9]{8}">
+                        <input type="text" id="firstSemY2Sub6" size="58" value="DATA STRUCTURES AND ALGORITHMS"><br>
+                        <input type="text" id="firstSemY2ID7" size="5" value="13016213" pattern="[0-9]{8}">
+                        <input type="text" id="firstSemY2Sub7" size="58" value="DATA STRUCTURES AND ALGORITHMS LABORATORY"><br>
+                        <input type="text" id="firstSemY2ID8" size="5" value="13016249" pattern="[0-9]{8}">
+                        <input type="text" id="firstSemY2Sub8" size="58" value="ADVANCED OBJECT-ORIENTED PROGRAMMING"><br>
+                        <label for="gps3" style="padding-left: 120px;"><b>GPS: </b></label>
+                        <input type="text" id="gps3" size="1">
+                        <label for="gpa4" style="padding-left: 50px;"><b>GPA: </b></label>
+                        <input type="text" id="gpa4" size="1"><br><br>
+
+                        <label style="padding-left: 100px;"><b>Total number of credits earned:</b></label>
+                        <input type="text" id="totalCredit" size="1">
+                    </td>
+                    <td style="text-align:center; vertical-align: top" colspan="1">
+                        <br><select id="credit1">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                
+                        <br><select id="credit2">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                
+                        <br><br><br><select id="credit3">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                
+                        <br><select id="credit4">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                
+                        <br><select id="credit5">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                
+                        <br><select id="credit6">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                
+                        <br><select id="credit7">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                
+                        <br><select id="credit8">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                
+                        <br><br><br><select id="credit9">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                
+                        <br><select id="credit10">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                
+                        <br><select id="credit11">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                
+                        <br><select id="credit12">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                
+                        <br><select id="credit13">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                
+                        <br><select id="credit14">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                
+                        <br><select id="credit15">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                
+                        <br><br><br><select id="credit16">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    
+                        <br><select id="credit17">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+
+                        <br><select id="credit18">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+
+                        <br><select id="credit19">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+
+                        <br><select id="credit20">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+
+                        <br><select id="credit21">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+
+                        <br><select id="credit22">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+
+                        <br><select id="credit23">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </td>
+                    <td style="text-align:center; vertical-align: top" colspan="1">
+                        <br><select id="grade1">
+                            <option value="A">A</option>
+                            <option value="A">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C+</option>
+                            <option value="C">C</option>
+                            <option value="C">D+</option>
+                            <option value="C">D</option>
+                            <option value="C">F</option>
+                        </select>
+                
+                        <br><select id="grade2">
+                            <option value="A">A</option>
+                            <option value="A">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C+</option>
+                            <option value="C">C</option>
+                            <option value="C">D+</option>
+                            <option value="C">D</option>
+                            <option value="C">F</option>
+                        </select>
+                
+                        <br><br><br><select id="grade3">
+                            <option value="A">A</option>
+                            <option value="A">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C+</option>
+                            <option value="C">C</option>
+                            <option value="C">D+</option>
+                            <option value="C">D</option>
+                            <option value="C">F</option>
+                        </select>
+                
+                        <br><select id="grade4">
+                            <option value="A">A</option>
+                            <option value="A">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C+</option>
+                            <option value="C">C</option>
+                            <option value="C">D+</option>
+                            <option value="C">D</option>
+                            <option value="C">F</option>
+                        </select>
+                
+                        <br><select id="grade5">
+                            <option value="A">A</option>
+                            <option value="A">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C+</option>
+                            <option value="C">C</option>
+                            <option value="C">D+</option>
+                            <option value="C">D</option>
+                            <option value="C">F</option>
+                        </select>
+                
+                        <br><select id="grade6">
+                            <option value="A">A</option>
+                            <option value="A">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C+</option>
+                            <option value="C">C</option>
+                            <option value="C">D+</option>
+                            <option value="C">D</option>
+                            <option value="C">F</option>
+                        </select>
+                
+                        <br><select id="grade7">
+                            <option value="A">A</option>
+                            <option value="A">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C+</option>
+                            <option value="C">C</option>
+                            <option value="C">D+</option>
+                            <option value="C">D</option>
+                            <option value="C">F</option>
+                        </select>
+                
+                        <br><select id="grade8">
+                            <option value="A">A</option>
+                            <option value="A">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C+</option>
+                            <option value="C">C</option>
+                            <option value="C">D+</option>
+                            <option value="C">D</option>
+                            <option value="C">F</option>
+                        </select>
+                
+                        <br><br><br><select id="grade9">
+                            <option value="A">A</option>
+                            <option value="A">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C+</option>
+                            <option value="C">C</option>
+                            <option value="C">D+</option>
+                            <option value="C">D</option>
+                            <option value="C">F</option>
+                        </select>
+                
+                        <br><select id="grade10">
+                            <option value="A">A</option>
+                            <option value="A">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C+</option>
+                            <option value="C">C</option>
+                            <option value="C">D+</option>
+                            <option value="C">D</option>
+                            <option value="C">F</option>
+                        </select>
+                
+                        <br><select id="grade11">
+                            <option value="A">A</option>
+                            <option value="A">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C+</option>
+                            <option value="C">C</option>
+                            <option value="C">D+</option>
+                            <option value="C">D</option>
+                            <option value="C">F</option>
+                        </select>
+                
+                        <br><select id="grade12">
+                            <option value="A">A</option>
+                            <option value="A">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C+</option>
+                            <option value="C">C</option>
+                            <option value="C">D+</option>
+                            <option value="C">D</option>
+                            <option value="C">F</option>
+                        </select>
+                
+                        <br><select id="grade13">
+                            <option value="A">A</option>
+                            <option value="A">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C+</option>
+                            <option value="C">C</option>
+                            <option value="C">D+</option>
+                            <option value="C">D</option>
+                            <option value="C">F</option>
+                        </select>
+                
+                        <br><select id="grade14">
+                            <option value="A">A</option>
+                            <option value="A">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C+</option>
+                            <option value="C">C</option>
+                            <option value="C">D+</option>
+                            <option value="C">D</option>
+                            <option value="C">F</option>
+                        </select>
+                
+                        <br><select id="grade15">
+                            <option value="A">A</option>
+                            <option value="A">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C+</option>
+                            <option value="C">C</option>
+                            <option value="C">D+</option>
+                            <option value="C">D</option>
+                            <option value="C">F</option>
+                        </select>
+                
+                        <br><br><br><select id="grade16">
+                            <option value="A">A</option>
+                            <option value="A">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C+</option>
+                            <option value="C">C</option>
+                            <option value="C">D+</option>
+                            <option value="C">D</option>
+                            <option value="C">F</option>
+                        </select>
+                    
+                        <br><select id="grade17">
+                            <option value="A">A</option>
+                            <option value="A">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C+</option>
+                            <option value="C">C</option>
+                            <option value="C">D+</option>
+                            <option value="C">D</option>
+                            <option value="C">F</option>
+                        </select>
+
+                        <br><select id="grade18">
+                            <option value="A">A</option>
+                            <option value="A">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C+</option>
+                            <option value="C">C</option>
+                            <option value="C">D+</option>
+                            <option value="C">D</option>
+                            <option value="C">F</option>
+                        </select>
+
+                        <br><select id="grade19">
+                            <option value="A">A</option>
+                            <option value="A">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C+</option>
+                            <option value="C">C</option>
+                            <option value="C">D+</option>
+                            <option value="C">D</option>
+                            <option value="C">F</option>
+                        </select>
+
+                        <br><select id="grade20">
+                            <option value="A">A</option>
+                            <option value="A">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C+</option>
+                            <option value="C">C</option>
+                            <option value="C">D+</option>
+                            <option value="C">D</option>
+                            <option value="C">F</option>
+                        </select>
+
+                        <br><select id="grade21">
+                            <option value="A">A</option>
+                            <option value="A">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C+</option>
+                            <option value="C">C</option>
+                            <option value="C">D+</option>
+                            <option value="C">D</option>
+                            <option value="C">F</option>
+                        </select>
+
+                        <br><select id="grade22">
+                            <option value="A">A</option>
+                            <option value="A">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C+</option>
+                            <option value="C">C</option>
+                            <option value="C">D+</option>
+                            <option value="C">D</option>
+                            <option value="C">F</option>
+                        </select>
+
+                        <br><select id="grade23">
+                            <option value="A">A</option>
+                            <option value="A">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C+</option>
+                            <option value="C">C</option>
+                            <option value="C">D+</option>
+                            <option value="C">D</option>
+                            <option value="C">F</option>
+                        </select>
+                    </td>
+                    <td colspan="3"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
