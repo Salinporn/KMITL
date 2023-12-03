@@ -7,17 +7,17 @@ SEmester is a group project undertaken as part of our university's Web Programmi
 📚 Key Features:
 
 For Students:
+- Assignment Submission: Effortlessly submit assignments through a user-friendly interface.
+- Grade Viewer with Graph: Visualize academic progress through an intuitive graph, gaining insights into performance trends.
+- Attendance Overview: Keep track of attendance records at a glance.
+- Interactive Communication: Provide students with a direct channel to contact their teachers for assistance.
+- Study Tools: Access essential study aids like a scientific calculator, calendar, and a collaborative note-sharing archive.
 
-Assignment Submission: Effortlessly submit assignments through a user-friendly interface.
-Grade Viewer with Graph: Visualize academic progress through an intuitive graph, gaining insights into performance trends.
-Attendance Overview: Keep track of attendance records at a glance.
-Interactive Communication: Provide students with a direct channel to contact their teachers for assistance.
-Study Tools: Access essential study aids like a scientific calculator, calendar, and a collaborative note-sharing archive.
 For Teachers:
+- Assignment Management: Streamline the assignment process, making it easy to assign and collect work.
+- Announcement Hub: Communicate announcements seamlessly to the entire class.
+- Attendance Checker: Effortlessly track and manage student attendance.
+- Grade Calculator and Class Overview: Evaluate student performance and gain insights into class progress.
+- Teacher-Student Interaction: Foster a supportive learning environment by providing a space for students to seek assistance.
 
-Assignment Management: Streamline the assignment process, making it easy to assign and collect work.
-Announcement Hub: Communicate announcements seamlessly to the entire class.
-Attendance Checker: Effortlessly track and manage student attendance.
-Grade Calculator and Class Overview: Evaluate student performance and gain insights into class progress.
-Teacher-Student Interaction: Foster a supportive learning environment by providing a space for students to seek assistance.
 This group project is created by Thanida Paige Pholsukcharoen and Salinporn Rattanaprapaporn
