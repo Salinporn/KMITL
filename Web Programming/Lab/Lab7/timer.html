@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Online Timer</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        th,
+        td {
+            padding-left: 20px;
+            padding-right: 20px;
+            text-align: center;
+        }
+
+        #edit_done {
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        #addRowButton {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Online Timer</h1>
+        <h2 id="currentTime"></h2>
+        <button id="edit_done">Edit</button>
+        <table id="theTable" border="1">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Alert Word</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>09:00</td>
+                    <td>Wake Up</td>
+                </tr>
+                <tr>
+                    <td>11:05</td>
+                    <td>Lunch Time</td>
+                </tr>
+                <tr>
+                    <td>15:30</td>
+                    <td>Take a Break</td>
+                </tr>
+            </tbody>
+        </table>
+        <button id="addRowButton">Add Row</button>
+    </div>
+    <script>
+        var hours = 8;
+        var minutes = 55;
+        var seconds = 0;
+
+        const edit_doneButton = document.getElementById("edit_done");
+        const table = document.getElementById("theTable");
+
+        function removeRow(rowIndex) {
+            table.deleteRow(rowIndex);
+            alertTimes.splice(rowIndex - 1, 1);
+        }
+
+        function editMode() {
+            edit_doneButton.textContent = "Done";
+            edit_doneButton.removeEventListener("click", editMode);
+            table.deleteRow(0);
+            for (var i = 0; i < table.rows.length; i++) {
+                table.rows[i].cells[0].innerHTML = "<input type='time' value='" + table.rows[i].cells[0].textContent + "'>";
+                table.rows[i].cells[1].innerHTML = "<input type='text' value='" + table.rows[i].cells[1].textContent + "'>";
+                table.rows[i].insertCell(2).innerHTML = "<button class='delete' onclick='removeRow(" + i + ")'>remove</button>";
+            }
+            edit_doneButton.addEventListener("click", doneMode);
+            var addRowButton = document.getElementById("addRowButton");
+            addRowButton.style.display = "block";
+            addRowButton.addEventListener("click", addRow);
+        }
+
+        function addRow() {
+            var newRow = table.insertRow(table.rows.length);
+            newRow.insertCell(0).innerHTML = "<input type='time'>";
+            newRow.insertCell(1).innerHTML = "<input type='text'>";
+            newRow.insertCell(2).innerHTML = "<button class='delete' onclick='removeRow(" + (table.rows.length - 1) + ")'>remove</button>";
+        }
+
+        function doneMode() {
+            edit_doneButton.textContent = "Edit";
+            edit_doneButton.removeEventListener("click", doneMode);
+            table.insertRow(0).innerHTML = "<thead><tr><th>Time</th><th>Alert Word</th></tr></thead>";
+            for (var i = 1; i < table.rows.length; i++) {
+                table.rows[i].cells[0].innerHTML = table.rows[i].cells[0].children[0].value;
+                table.rows[i].cells[1].innerHTML = table.rows[i].cells[1].children[0].value;
+                table.rows[i].deleteCell(2);
+            }
+            edit_doneButton.addEventListener("click", editMode);
+            var addRowButton = document.getElementById("addRowButton");
+            addRowButton.style.display = "none";
+            addRowButton.removeEventListener("click", addRow);
+            alertTimes.length = 0;
+            for (var i = 1; i < table.rows.length; i++) {
+                alertTimes.push(new AlertTime(table.rows[i].cells[0].textContent, table.rows[i].cells[1].textContent));
+            }
+        }
+
+        function AlertTime(time, alertMessage) {
+            this.time = time;
+            this.alertMessage = alertMessage;
+        }
+
+        const alertTimes = [
+            new AlertTime("09:00", "Wake Up"),
+            new AlertTime("11:05", "Lunch Time"),
+            new AlertTime("15:30", "Take a Break")
+        ];
+
+
+        function alertFunction() {
+            seconds += 1;
+            if (seconds >= 60) {
+                seconds = 0;
+                minutes += 1;
+            }
+            if (minutes >= 60) {
+                minutes = 0;
+                hours += 1;
+            }
+            if (hours >= 24) {
+                hours = 0;
+            }
+            if (hours < 10) {
+                printhours = "0" + hours;
+            } else {
+                printhours = hours;
+            }
+
+            if (minutes < 10) {
+                printminutes = "0" + minutes;
+            } else {
+                printminutes = minutes;
+            }
+
+            document.getElementById("currentTime").textContent = "Current Time(1000x faster): " + printhours + ":" + printminutes;
+
+            for (var i = 0; i < alertTimes.length; i++) {
+                if (alertTimes[i].time == printhours + ":" + printminutes) {
+                    alert(alertTimes[i].alertMessage);
+                    minutes += 1;
+                }
+            }
+        }
+        setInterval(alertFunction, 1);
+
+        edit_doneButton.addEventListener("click", editMode);
+
+    </script>
+</body>
+
+</html>
