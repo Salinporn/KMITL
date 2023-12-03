@@ -1,2 +1,2 @@
 # KMITL
-my labs, homeworks, works, projects during my study at King Mongkut's Institute of Technology Ladkrabang KMITL
+my labs, homeworks, and works during my study in Software Engineering at King Mongkut's Institute of Technology Ladkrabang KMITL
