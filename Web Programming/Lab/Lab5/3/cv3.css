@@ -1,0 +1,188 @@
+body {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 15px;
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    body {
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    body {
+        font-size: 26px;
+    }
+}
+
+.leftProfile {
+    float: right;
+    background-color: steelblue;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    max-width: 250px;
+    padding: 10px;
+}
+
+.profilePic img {
+    width: 100%;
+    max-width: 250px;
+    height: 100%;
+    border-radius: 50%;
+}
+
+@media screen and (min-height: 800px) {
+    .profilePic img {
+        width: 150%;
+    }
+}
+
+.profile {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.address {
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    padding-top: 100px;
+}
+
+.contacts {
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    padding-top: 100px;
+}
+
+.ref {
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    padding-top: 20px;
+}
+
+.favColor {
+    text-align: left;
+    padding-top: 20px;
+}
+
+.righttop {
+   
+    background-color: rgb(245, 245, 120);
+    text-align: left;
+    color: black;
+    
+    font-weight: bold;
+    width: 100%;
+    padding: 11px;
+}
+
+.personnalInfo {
+    width: 100%;
+    height: 100%;
+    padding-top: 20px;
+}
+
+.info {
+    width: 100%;
+    height: 100%;
+    padding-top: 20px;
+}
+
+.rightmid {
+   
+    background-color: rgb(44, 127, 63);
+    text-align: left;
+    color: black;
+    
+    font-weight: bold;
+     width: 100%;
+    padding: 11px;
+}
+
+.edu {
+    width: 100%;
+    height: 100%;
+}
+
+.eduInfo {
+    width: 100%;
+    height: 100%;
+    padding-top: 20px;
+}
+
+.rightbottom1 {
+   
+    text-align: left;
+    
+    font-weight: bold;
+    background-color: rgb(255, 43, 220);
+    color: white;
+    width: 100%;
+    padding: 11px;
+}
+
+.skillExp {
+    width: 100%;
+    height: 100%;
+}
+
+.rightbottom2 {
+   
+    text-align: left;
+    
+    font-weight: bold;
+    background-color: lightgrey;
+    color: rgb(70, 0, 128);
+    width: 100%;
+    padding: 11px;
+}
+
+.skill {
+    width: 100%;
+    height: 100%;
+    padding-top: 20px;
+}
+
+.exp {
+    width: 100%;
+    height: 100%;
+    padding-top: 20px;
+}
+
+.submit button {
+    width: 80px;
+    background-color: rgb(6, 245, 6);
+}
+
+textarea, input {
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item {
+    flex: 1;
+}
+
+@media screen and (max-width: 600px) {
+    .item {
+        flex: 100%;
+    }
+}
