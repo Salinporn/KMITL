@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Shopping List</title>
+    </head>
+    <style>
+        th, td {
+            border: solid 1px black;
+            padding: 10px;
+        }
+        th {
+            background-color: bisque;
+        }
+    </style>
+    <body style="font-family: Arial;">
+        <h1>Shopping List</h1>
+        <table id="myTable">
+            <div id="tableBody">
+            </div>
+        </table>
+        <br><button onclick="resetList()">Reset List</button>
+        <h2>Add Item</h2>
+        <label>Name:</label>
+        <input type="text" id="name"><br>
+        <br><label>Amount:</label>
+        <input type="text" id="amount"><br>
+        <br><label>Price:</label>
+        <input type="text" id="price"><br>
+        <br><button onclick="addText()">Add</button>
+        <button onclick="clearText()">Clear</button>
+
+        <script>
+            document.getElementById("myTable").innerHTML = '<tr><th>Name</th><th>Amount</th><th>Price</th></tr>';
+            document.getElementById("myTable").style.width = '100%';
+            document.getElementById("myTable").style.textAlign = 'left';
+            document.getElementById("myTable").style.fontSize = '18px';
+            document.getElementById("myTable").style.borderCollapse = 'collapse';
+            document.getElementById("tableBody").style.width = '33%';
+
+            function addText() {
+                const table = document.getElementById("myTable");
+                const row = table.insertRow(-1);
+            
+                // Create table cells
+                const c1 = row.insertCell(0);
+                const c2 = row.insertCell(1);
+                const c3 = row.insertCell(2);
+
+                // Get input values
+                const name = document.getElementById("name").value;
+                const amount = document.getElementById("amount").value;
+                const price = document.getElementById("price").value;
+
+                // Add input values to table
+                c1.innerHTML = name;
+                c2.innerHTML = amount;
+                c3.innerHTML = price;
+            }
+
+            function clearText() {
+                document.getElementById("name").value = '';
+                document.getElementById("amount").value = '';
+                document.getElementById("price").value = '';
+            }
+
+            function resetList() {
+                document.getElementById("myTable").innerHTML = '';
+                document.getElementById("myTable").innerHTML = '<tr><th>Name</th><th>Amount</th><th>Price</th></tr>';
+            }
+        </script>
+    </body>
+</html>
