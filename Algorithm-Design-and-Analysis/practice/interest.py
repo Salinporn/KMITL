@@ -1,6 +1,4 @@
-"""docstring"""
 def optimal_interest(number1, number2, number3):
-    """docstring"""
     max_profit = 0.0
     interest = 0.0
     temp_interest = 0.0
