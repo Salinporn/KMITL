@@ -1,6 +1,4 @@
-"""docstring"""
 def booth_rental(rental_fee, incomes):
-    """docstring"""
     max_profit = 0
     for i in range(len(incomes)):
         temp_income = 0
