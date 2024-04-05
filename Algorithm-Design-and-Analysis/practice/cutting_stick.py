@@ -1,6 +1,4 @@
-"""docstring"""
 def cutting_stick(length_stick, positions, memo={}):
-    """docstring"""
     if len(positions) == 0:
         return 0
     key = (length_stick, tuple(positions))
